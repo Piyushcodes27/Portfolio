@@ -52,71 +52,19 @@
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-        /* Circular rainbow / colorful gradient rotate effect */
-@keyframes colorfulGlow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulseSplash {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 15px rgba(255, 0, 128, 0.6), 0 0 25px rgba(0, 255, 255, 0.6);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 35px rgba(138, 43, 226, 0.8);
-  }
-}
-
-/* Outer Wrapper container for colorful spray effect */
-.colorful-avatar-container {
-  position: relative;
-  display: inline-block;
+        /* Simple & Clean Circular Profile Photo */
+.simple-profile-img {
   border-radius: 50%;
-  padding: 6px; /* Spray/border ki thickness */
-  background: conic-gradient(
-    #ff007f, 
-    #7928ca, 
-    #0070f3, 
-    #00dfd8, 
-    #ff4d4d, 
-    #f5a623, 
-    #ff007f
-  );
-  animation: pulseSplash 3s ease-in-out infinite;
+  border: 3px solid #334155; /* Simple dark border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Animated rotating rainbow glow behind the image */
-.colorful-avatar-container::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: conic-gradient(
-    #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000
-  );
-  filter: blur(12px);
-  opacity: 0.7;
-  z-index: 0;
-  animation: colorfulGlow 4s linear infinite;
-}
-
-/* Image styles */
-.colorful-photo {
-  position: relative;
-  z-index: 1;
-  display: block;
-  border-radius: 50%;
-  transition: transform 0.4s ease;
-}
-
-.colorful-avatar-container:hover .colorful-photo {
-  transform: scale(1.05) rotate(2deg);
+/* Hover Effect: Subtle Zoom & Bright Glow */
+.simple-profile-img:hover {
+  transform: scale(1.05);
+  border-color: #38bdf8; /* Soft blue highlight border */
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
 }
     </style>
 </head>
@@ -167,11 +115,12 @@
         </div>
         <!-- Profile Photo Container with Colorful Spray Glow -->
 <div class="colorful-avatar-container">
-  <img 
-    src="Professional Passport size photo.jpeg" 
-    alt="Piyush Kumar" 
-    class="w-48 h-48 md:w-56 md:h-56 object-cover colorful-photo"
-  />
+  <!-- Profile Photo -->
+<img 
+  src="Professional Passport size photo.jpeg" 
+  alt="Piyush Kumar" 
+  class="relative w-48 h-48 md:w-56 md:h-56 object-cover simple-profile-img"
+/>
 </div>
     </header>
 
