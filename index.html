@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,6 +51,73 @@
         ::-webkit-scrollbar-track { background: #0b1121; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        /* Circular rainbow / colorful gradient rotate effect */
+@keyframes colorfulGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseSplash {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.6), 0 0 25px rgba(0, 255, 255, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 0 35px rgba(138, 43, 226, 0.8);
+  }
+}
+
+/* Outer Wrapper container for colorful spray effect */
+.colorful-avatar-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 6px; /* Spray/border ki thickness */
+  background: conic-gradient(
+    #ff007f, 
+    #7928ca, 
+    #0070f3, 
+    #00dfd8, 
+    #ff4d4d, 
+    #f5a623, 
+    #ff007f
+  );
+  animation: pulseSplash 3s ease-in-out infinite;
+}
+
+/* Animated rotating rainbow glow behind the image */
+.colorful-avatar-container::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000
+  );
+  filter: blur(12px);
+  opacity: 0.7;
+  z-index: 0;
+  animation: colorfulGlow 4s linear infinite;
+}
+
+/* Image styles */
+.colorful-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+
+.colorful-avatar-container:hover .colorful-photo {
+  transform: scale(1.05) rotate(2deg);
+}
     </style>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-white">
@@ -98,11 +165,14 @@
                 Available for Internship / Full-time Roles
             </span>
         </div>
-        <div class="shrink-0 relative mt-4 md:mt-0">
-            <div class="absolute -inset-1 bg-cyan-500 rounded-full blur opacity-20"></div>
-            <!-- Profile Photo -->
-            <img src="Professional Passport size photo.jpeg" alt="Piyush Kumar" class="relative w-48 h-48 md:w-56 md:h-56 object-cover rounded-full border-2 border-slate-700 shadow-xl">
-        </div>
+        <!-- Profile Photo Container with Colorful Spray Glow -->
+<div class="colorful-avatar-container">
+  <img 
+    src="Professional Passport size photo.jpeg" 
+    alt="Piyush Kumar" 
+    class="w-48 h-48 md:w-56 md:h-56 object-cover colorful-photo"
+  />
+</div>
     </header>
 
     <!-- Professional Summary & Focus -->
@@ -206,7 +276,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="glass-card p-5">
                 <h3 class="text-white font-bold mb-2">Programming</h3>
-                <p class="text-slate-400 text-sm">Python, C, C#, Java</p>
+                <p class="text-slate-400 text-sm">Python</p>
             </div>
             <div class="glass-card p-5">
                 <h3 class="text-white font-bold mb-2">Web Technologies</h3>
